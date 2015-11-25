@@ -1,0 +1,24 @@
+#!/bin/python
+
+import pexpect
+import getpass,os
+
+host=10.242.108.15
+user=nimbulaadmin
+passwd=OracleCloud9
+cmd="sudo cat /var/run/bAuth.pid"
+
+child = pexpect.spawn('ssh -l %s %s %s'%(user,host,cmd))
+index = child.expect([pexpect.TIMEOUT,ssh_newkey,'password:'])
+if index == 0:
+        print "ERROR!"
+        return None
+if index == 1:
+        child.sendline('yes')
+        child.expect('password:')
+        index = child.expect([pexpect.TIMEOUT,'password:'])
+        if i == 0:
+                print "CMD ERROR!"
+                return None
+        child.sendline(password)
+        return child
