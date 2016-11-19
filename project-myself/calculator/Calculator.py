@@ -1,5 +1,6 @@
 #/usr/bin/python
 # -*- coding: utf-8 -*-
+import pdb
 
 # 输入字符串处理    
 class Buffer(object):
@@ -43,6 +44,7 @@ class OperatorToken(Token):
     # 读取一个字符，然后返回这个字符，如果字符不是+-，则返回None
     def consume(self, buffer):
         ch = buffer.peek()
+        pdb.set_trace()
         if ch is not None and ch in "+-":
             buffer.advance()
             return ("ope", ch)
@@ -69,12 +71,14 @@ def tokenize(string):
     buffer = Buffer(string)
     tk_int = IntToken()
     tk_op = OperatorToken()
+    print tk_op
     tokens = []
     
     while buffer.peek():
         token = None
         # 用两种类型的Token进行测试
         for tk in (tk_int, tk_op):
+            print "### ",tk
             token = tk.consume(buffer)
             if token:
                 tokens.append(token)
