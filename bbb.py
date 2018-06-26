@@ -7,7 +7,7 @@ import pdb
 if __name__ == '__main__':
     user = 'sun'
     ip = '127.0.0.1'
-    mypassword = 'oracle'
+    mypassword = 'leying'
 
     #pdb.set_trace()
     child = pexpect.spawn('ssh %s@%s' % (user,ip))

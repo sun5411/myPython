@@ -1,0 +1,2 @@
+Lock acquired directly
+Lock acquired via with

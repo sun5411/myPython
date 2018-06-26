@@ -1,6 +1,13 @@
 #!/usr/bin/env python
-squares=[]
-for i in range(0,10):
-    squares.append(i**2)
+import re
 
-print squares
+str = '123&&sdfsfdsdfsf;123s9d9fsdf12315677a1'
+
+number_list = re.findall(r"\d+",str)
+string_list = re.findall(r"[a-z]+",str)
+
+### 字符串排序
+max_num = sorted(number_list,key=lambda x: len(x))[-1]
+max_str = sorted(string_list,key=lambda x: len(x))[-1]
+print max_num,max_str
+
